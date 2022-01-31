@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-""""""
-
-
+"""Module"""
 import typing
 
 
