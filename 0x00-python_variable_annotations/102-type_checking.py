@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-""""""
-
+"""Module"""
 from typing import Tuple, List
 
 
