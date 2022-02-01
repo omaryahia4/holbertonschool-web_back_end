@@ -1,4 +1,4 @@
-# Python - Async :
+# Python - Async
 ## Learning Objectives :
 -   async and await syntax
 -   How to execute an async program with asyncio
