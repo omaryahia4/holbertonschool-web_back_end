@@ -8,6 +8,7 @@ wait_random = __import__('0-basic_async_syntax').wait_random
 
 
 async def wait_n(n: int, max_delay: int) -> typing.List[float]:
+    """Function that returns list of all the delays"""
     l: typing.List[float] = []
     for _ in range(n):
         task = await wait_random(max_delay)
