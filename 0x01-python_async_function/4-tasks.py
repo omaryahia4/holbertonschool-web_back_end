@@ -7,7 +7,7 @@ import typing
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
-async def task_wait_n(n: int, max_delay: int) -> typing.List[float]:
+async def task_wait_n(n: int, max_delay: int = 10) -> typing.List[float]:
     """Function that returns list of function's delays"""
     l: typing.List[float] = []
     for _ in range(n):
