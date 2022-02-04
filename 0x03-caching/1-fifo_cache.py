@@ -8,14 +8,12 @@ class FIFOCache(BaseCaching):
     def __init__(self):
         """init function"""
         super().__init__()
-        self.called = ""
 
     def put(self, key, item):
         """Function that add new items to dictionary"""
         if key and item:
             self.cache_data[key] = item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            self.cache_data[key] = self.cache_data.pop(self.called)
             first = list(self.cache_data)[0]
             self.cache_data.pop(first)
             print("DISCARD: {}".format(first, end=""))
