@@ -9,10 +9,9 @@ class BasicCache(BaseCaching):
 
     def put(self, key, item):
         """Function that add new items to dictionary"""
+        self.cache_data[key] = item
         if key or item is None:
             pass
-        else:
-            self.cache_data[key] = item
 
     def get(self, key):
         """Function that gets data from dicitonary"""
