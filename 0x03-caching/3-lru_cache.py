@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""LIFO caching"""
-
+"""LRU caching"""
 from base_caching import BaseCaching
 
 
@@ -9,7 +8,6 @@ class LRUCache(BaseCaching):
     def __init__(self):
         """init function"""
         super().__init__()
-        self.called = ""
 
     def get(self, key):
         """Function that gets data from dicitonary"""
@@ -20,7 +18,7 @@ class LRUCache(BaseCaching):
             self.cache_data[key] = self.cache_data.pop(key)
             return self.cache_data[key]
         else:
-            return self.cache_data[self.called]
+            return self.cache_data[key]
 
     def put(self, key, item):
         """Function that add new items to dictionary"""
