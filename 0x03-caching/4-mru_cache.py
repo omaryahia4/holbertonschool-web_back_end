@@ -30,5 +30,5 @@ class MRUCache(BaseCaching):
             self.cache_data.pop(self.remove)
             print("DISCARD: {}".format(self.remove, end=""))
             self.remove = key
-        else:
+        if key is None or item is None:
             pass
