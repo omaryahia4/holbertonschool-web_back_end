@@ -20,7 +20,7 @@ class LRUCache(BaseCaching):
             first = list(self.cache_data)[0]
             self.cache_data.pop(first)
             print("DISCARD: {}".format(first, end=""))
-        else:
+        if key is None or item is None:
             pass
 
     def get(self, key):
