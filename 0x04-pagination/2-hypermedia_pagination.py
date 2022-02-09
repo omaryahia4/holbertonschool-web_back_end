@@ -46,6 +46,9 @@ class Server:
         return listt[page:page_size]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, str]:
+        """method that returns a dictionary
+        containing the following key-value pairs:
+        page_size,page,data,next_page,prev_page,total_pages"""
         data = self.get_page(page, page_size)
         length = len(self.dataset())
         total_pages = math.ceil(length / page_size)
