@@ -11,6 +11,8 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """Function that add new items to dictionary"""
+        if key is None or item is None:
+            pass
         if key and item:
             self.cache_data[key] = item
         if key in self.cache_data:
@@ -20,8 +22,6 @@ class LRUCache(BaseCaching):
             first = list(self.cache_data)[0]
             self.cache_data.pop(first)
             print("DISCARD: {}".format(first, end=""))
-        if key is None or item is None:
-            pass
 
     def get(self, key):
         """Function that gets data from dicitonary"""
