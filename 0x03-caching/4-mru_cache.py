@@ -26,9 +26,9 @@ class MRUCache(BaseCaching):
         """Function that add new items to dictionary"""
         if key and item:
             self.cache_data[key] = item
+        if key is None or item is None:
+            return
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             self.cache_data.pop(self.remove)
             print("DISCARD: {}".format(self.remove, end=""))
             self.remove = key
-        if key is None or item is None:
-            return
