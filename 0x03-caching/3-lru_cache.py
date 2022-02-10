@@ -11,10 +11,10 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """Function that add new items to dictionary"""
-        if key is None or item is None:
-            pass
         if key and item:
             self.cache_data[key] = item
+        if key is None or item is None:
+            pass
         if key in self.cache_data:
             self.cache_data.pop(key)
             self.cache_data[key] = item
