@@ -14,7 +14,7 @@ class LRUCache(BaseCaching):
         if key and item:
             self.cache_data[key] = item
         if key is None or item is None:
-            pass
+            return
         if key in self.cache_data:
             self.cache_data.pop(key)
             self.cache_data[key] = item
