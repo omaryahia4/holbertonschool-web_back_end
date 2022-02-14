@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """log message"""
-from typing import List
+from typing import List, Tuple
 import re
 import logging
+
+PII_FIELDS: List[str]\
+    = ["email", "phone", "ssn", "password", 'ip']
 
 
 class RedactingFormatter(logging.Formatter):
@@ -23,6 +26,16 @@ class RedactingFormatter(logging.Formatter):
         log records using filter_datum function"""
         return filter_datum(self.fields, self.REDACTION,
                             super().format(record), self.SEPARATOR)
+
+
+def get_logger() -> logging.Logger:
+    logging.basicConfig()
+    logger = logging.getLogger("user_data")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+    logger.addHandler(logging.StreamHandler()
+                      .setFormatter(RedactingFormatter(PII_FIELDS)))
+    return logger
 
 
 def filter_datum(fields: List[str], redaction: str,
