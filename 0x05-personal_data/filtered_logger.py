@@ -4,8 +4,8 @@ from typing import List, Tuple
 import re
 import logging
 
-PII_FIELDS: List[str]\
-    = ["email", "phone", "ssn", "password", 'ip']
+PII_FIELDS: Tuple[str, str, str, str, str]\
+    = ("email", "phone", "ssn", "password", 'ip')
 
 
 class RedactingFormatter(logging.Formatter):
@@ -29,6 +29,8 @@ class RedactingFormatter(logging.Formatter):
 
 
 def get_logger() -> logging.Logger:
+    """function that takes no arguments
+    and returns a logging.Logger object."""
     logging.basicConfig()
     logger = logging.getLogger("user_data")
     logger.setLevel(logging.INFO)
