@@ -5,7 +5,7 @@ import re
 import logging
 
 PII_FIELDS: Tuple[str, str, str, str, str]\
-    = ("email", "phone", "ssn", "password", 'ip')
+    = ("email", "phone", "ssn", "password", "ip")
 
 
 class RedactingFormatter(logging.Formatter):
