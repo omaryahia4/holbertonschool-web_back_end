@@ -3,6 +3,9 @@
 from typing import List, Tuple
 import re
 import logging
+from os import getenv
+import mysql.connector
+
 
 PII_FIELDS: Tuple[str, str, str, str, str]\
     = ("email", "phone", "ssn", "password", "name")
@@ -49,3 +52,13 @@ def filter_datum(fields: List[str], redaction: str,
                          "{}={}{}".format(field,
                                           redaction, separator), message)
     return message
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """function that returns a connector to the database"""
+    return mysql.connector.connection.MySQLConnection(
+                        host=getenv('PERSONAL_DATA_DB_HOST', 'localhost'),
+                        database=getenv('PERSONAL_DATA_DB_NAME'),
+                        user=getenv('PERSONAL_DATA_DB_USERNAME', 'root'),
+                        password=getenv('PERSONAL_DATA_DB_PASSWORD', '')
+                        )
