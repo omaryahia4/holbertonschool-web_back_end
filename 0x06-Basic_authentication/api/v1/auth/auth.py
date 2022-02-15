@@ -24,7 +24,6 @@ class Auth():
         if last_item in special_character:
             if path in excluded_paths:
                 return False
-
         else:
             return True
 
