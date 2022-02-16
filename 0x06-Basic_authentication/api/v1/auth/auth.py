@@ -2,6 +2,7 @@
 """ Module of Auth
 """
 from typing import List, TypeVar
+from flask import request
 
 
 class Auth():
@@ -27,7 +28,12 @@ class Auth():
     def authorization_header(self, request=None) -> str:
         """public method that returns
         None - request will be the Flask request object"""
-        return None
+        if request is None:
+            return None
+        if 'Authorization' not in request.headers:
+            return None
+        else:
+            return request.headers['Authorization']
 
     def current_user(self, request=None) -> TypeVar('User'):
         """public method  that returns
