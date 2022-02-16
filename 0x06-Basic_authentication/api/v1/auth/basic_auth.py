@@ -68,5 +68,4 @@ class BasicAuth(Auth):
         user = User.search(attr)[0]
         if not user.is_valid_password(user_pwd):
             return None
-        else:
-            return user
+        return user
