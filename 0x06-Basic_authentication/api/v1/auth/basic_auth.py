@@ -67,7 +67,7 @@ class BasicAuth(Auth):
         if not u.search(attr):
             return None
         user = u.search(attr)[0]
-        if user is not User:
+        if not user:
             return None
         if not user.is_valid_password(user_pwd):
             return None
