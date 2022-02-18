@@ -8,7 +8,7 @@ import uuid
 
 class SessionAuth(Auth):
     """Session class"""
-    def __init__(self) -> None:
+    def __init__(self):
         """Constructor"""
         self.user_id_by_session_id = {}
 
