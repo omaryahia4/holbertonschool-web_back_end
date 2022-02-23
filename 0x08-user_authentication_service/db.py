@@ -60,3 +60,4 @@ class DB:
             else:
                 setattr(user, key, value)
         self._session.commit()
+        return None
