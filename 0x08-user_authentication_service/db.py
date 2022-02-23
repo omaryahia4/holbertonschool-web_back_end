@@ -50,7 +50,7 @@ class DB:
             raise NoResultFound
         return user
 
-    def update_user(self, user_id: int, **kwargs):
+    def update_user(self, user_id: int, **kwargs) -> None:
         """Method that updates user"""
         ele = ['id', 'email', 'hashed_password', 'session_id', 'reset_token']
         user = self.find_user_by(id=user_id)
@@ -60,4 +60,3 @@ class DB:
             else:
                 setattr(user, key, value)
         self._session.commit()
-        return None
