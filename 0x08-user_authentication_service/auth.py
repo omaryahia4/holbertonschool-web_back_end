@@ -64,3 +64,9 @@ class Auth:
         if not user or session_id is None:
             return None
         return user
+
+    def destroy_session(self, user_id: int) -> None:
+        """Destroy session"""
+        user = self._db.find_user_by(id=user_id)
+        session_id = getattr(user, 'session_id')
+        return setattr(user, session_id, None)
