@@ -70,7 +70,6 @@ class Auth:
         """Destroy session"""
         try:
             user = self._db.find_user_by(id=user_id)
-            session_id = getattr(user, 'session_id')
-            return setattr(user, session_id, None)
+            return setattr(user, 'session_id', None)
         except Exception:
             return None
