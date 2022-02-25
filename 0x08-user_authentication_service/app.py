@@ -70,7 +70,7 @@ def get_reset_password_token():
         return jsonify({"email": email,
                         "reset_token": token}), 200
     else:
-        abort((403))
+        abort(403)
 
 
 if __name__ == "__main__":
