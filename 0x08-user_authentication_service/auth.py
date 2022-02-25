@@ -60,13 +60,17 @@ class Auth:
 
     def get_user_from_session_id(self, session_id: str) -> User or None:
         """ get user by session_id"""
-        user = self._db.find_user_by(session_id=session_id)
-        if not user or session_id is None:
+        try:
+            user = self._db.find_user_by(session_id=session_id)
+            return user
+        except Exception:
             return None
-        return user
 
     def destroy_session(self, user_id: int) -> None:
         """Destroy session"""
-        user = self._db.find_user_by(id=user_id)
-        session_id = getattr(user, 'session_id')
-        return setattr(user, session_id, None)
+        try:
+            user = self._db.find_user_by(id=user_id)
+            session_id = getattr(user, 'session_id')
+            return setattr(user, session_id, None)
+        except Exception:
+            return None
