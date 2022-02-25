@@ -91,7 +91,7 @@ class Auth:
             user = self._db.find_user_by(reset_token=reset_token)
             if user:
                 password = _hash_password(password)
-                setattr(user, password, password)
+                setattr(user, user.hashed_password, password)
                 setattr(user, reset_token, None)
         except Exception:
             raise ValueError
