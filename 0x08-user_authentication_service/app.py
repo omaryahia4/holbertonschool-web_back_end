@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """"""
-from flask import Flask, jsonify, abort, request
+from flask import Flask, jsonify, request
 from auth import Auth
-from user import User
-from auth import _hash_password
 app = Flask(__name__)
 
 
@@ -22,7 +20,7 @@ def users() -> None:
     try:
         user = AUTH.register_user(email, password)
         if user:
-            return jsonify({f"email": {email}, "message": "user created"})
+            return jsonify({"email": email, "message": "user created"})
     except Exception:
         return jsonify({"message": "email already registered"}), 400
 
