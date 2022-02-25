@@ -13,7 +13,7 @@ def hello_app():
 
 
 @app.route('/users', methods=['POST'])
-def users() -> None:
+def users() -> str:
     """Register user route"""
     email = request.form.get('email')
     password = request.form.get('password')
