@@ -73,3 +73,14 @@ class Auth:
             return setattr(user, 'session_id', None)
         except Exception:
             return None
+
+    def get_reset_password_token(self, email: str) -> str:
+        """Generate and reset password token"""
+        try:
+            user = self._db.find_user_by(email=email)
+            user.reset_token = _generate_uuid()
+            self._db._session.add(user)
+            self._db._session.commit()
+            return user.reset_token
+        except Exception:
+            raise ValueError
