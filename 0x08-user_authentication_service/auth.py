@@ -93,5 +93,5 @@ class Auth:
                 password = _hash_password(password)
                 setattr(user, user.hashed_password, password)
                 setattr(user, user.reset_token, None)
-        except Exception:
+        except NoResultFound:
             raise ValueError
