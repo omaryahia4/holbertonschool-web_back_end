@@ -92,6 +92,6 @@ class Auth:
             if user:
                 password = _hash_password(password)
                 setattr(user, user.hashed_password, password)
-                setattr(user, reset_token, None)
+                setattr(user, user.reset_token, None)
         except Exception:
             raise ValueError
