@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""""""
+"""Module"""
 from flask import Flask, jsonify, request, abort, redirect, url_for
 from auth import Auth
 app = Flask(__name__)
