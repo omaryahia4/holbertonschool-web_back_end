@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""""""
+"""Test utils"""
 import unittest
 from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    """"""
+    """test accessnestedmap"""
     @parameterized.expand([
         ({"a": 1}, ["a"], 1),
         ({"a": {"b": 2}}, ["a"], {"b": 2}),
@@ -35,7 +35,7 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-    """"""
+    """test get_json"""
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
