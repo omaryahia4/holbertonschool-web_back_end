@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """"""
 import unittest
-import requests
 from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
 from typing import Mapping, Sequence
@@ -54,9 +53,7 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-    '''
-    a test class that inherits from unittest.TestCase
-    '''
+    """a test class that inherits from unittest.TestCase"""
 
     def test_memoize(self):
         """ Testing memorize"""
