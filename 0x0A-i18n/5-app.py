@@ -16,6 +16,13 @@ app.config.from_object(Config)
 Babel.default_locale = 'en'
 Babel.default_timezone = 'UTC'
 
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
+
 
 @app.route('/')
 def hello_world():
@@ -33,14 +40,6 @@ def get_locale():
         return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-users = {
-    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
-    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
-    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
-    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
-}
-
-
 def get_user():
     """function that returns a user dictionary"""
     login_as = users[request.args.get('login_as')]
@@ -50,9 +49,7 @@ def get_user():
         return None
 
 
-app.before_request
-
-
+@app.before_request
 def before_request():
     """global"""
     g.user = get_user()
