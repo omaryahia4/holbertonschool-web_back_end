@@ -27,7 +27,7 @@ users = {
 @app.route('/')
 def hello_world():
     """home route"""
-    return render_template('3-index.html')
+    return render_template('5-index.html')
 
 
 @babel.localeselector
@@ -42,7 +42,8 @@ def get_locale():
 
 def get_user():
     """function that returns a user dictionary"""
-    login_as = users[request.args.get('login_as')]
+    id = request.args.get('login_as')
+    login_as = users[id]
     if login_as:
         return login_as
     else:
