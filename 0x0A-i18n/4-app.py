@@ -20,7 +20,7 @@ Babel.default_timezone = 'UTC'
 @app.route('/')
 def hello_world():
     """home route"""
-    return render_template('3-index.html')
+    return render_template('4-index.html')
 
 
 @babel.localeselector
