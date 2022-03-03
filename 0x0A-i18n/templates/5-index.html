@@ -9,11 +9,11 @@
     <h1>
         {{ _('home_header') }}
     </h1>
-    {{% if g.user %}}
+    {% if g.user %}
     <p>{{ _('logged_in_as', username=g.user.name) }}</p>
-    {{% else %}}
+    {% else %}
     <p>{{ _('not_logged_in') }}</p>
-    {{% endif %}}
+    {% endif %}
 </body>
 
 </html>
