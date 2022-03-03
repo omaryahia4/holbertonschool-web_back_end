@@ -2,7 +2,6 @@
 """Babel module"""
 from flask import Flask, request, render_template, g
 from flask_babel import Babel
-
 app = Flask(__name__)
 babel = Babel(app)
 
@@ -15,7 +14,6 @@ class Config():
 app.config.from_object(Config)
 Babel.default_locale = 'en'
 Babel.default_timezone = 'UTC'
-
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
