@@ -41,9 +41,8 @@ def get_locale():
 def get_user():
     """function that returns a user dictionary"""
     id = request.args.get('login_as')
-    login_as = users[int(id)]
-    if login_as:
-        return login_as
+    if id:
+        return users[int(id)]
     else:
         return None
 
