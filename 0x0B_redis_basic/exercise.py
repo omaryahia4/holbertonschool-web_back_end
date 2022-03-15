@@ -6,14 +6,14 @@ import uuid
 from typing import Optional, Callable, Union
 
 
-def count_calls(func: Callable) -> Callable:
+def count_calls(method: Callable) -> Callable:
     """ Calls counter decorator """
-    key = func.__qualname__
-    @wraps(func)
+    key = method.__qualname__
+    @wraps(method)
     def wrapper(self, *args, **kwds):
         """Incrementation method's wrapper"""
         self._redis.incr(key)
-        return func(self, *args, **kwds)
+        return method(self, *args, **kwds)
     return wrapper
 
 
