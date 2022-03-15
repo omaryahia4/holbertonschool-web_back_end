@@ -23,10 +23,10 @@ class Cache():
         """method that converts the data back
         to the desired format."""
         data = self._redis.get(key)
-        if data:
-            return data
-        else:
+        if fn:
             return fn(data)
+        else:
+            return data
 
     def get_str(self, data):
         """method that decodes data"""
