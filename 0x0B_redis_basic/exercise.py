@@ -1,8 +1,20 @@
 #!/usr/bin/env python3
 """Redis module"""
+from functools import wraps
 import redis
 import uuid
-from typing import TypeVar, Optional, Callable, Union
+from typing import Optional, Callable, Union
+
+
+def count_calls(func: Callable) -> Callable:
+    """ Calls counter decorator """
+    key = func.__qualname__
+    @wraps(func)
+    def wrapper(self, *args, **kwds):
+        """Incrementation method's wrapper"""
+        self._redis.incr(key)
+        return func(self, *args, **kwds)
+    return wrapper
 
 
 class Cache():
@@ -12,6 +24,7 @@ class Cache():
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """ method that stores the input data in Redis
         using the random key and returns the key"""
