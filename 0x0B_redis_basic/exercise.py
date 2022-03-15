@@ -9,8 +9,8 @@ class Cache():
     """Cache class"""
     def __init__(self):
         """Intizializer"""
-    _redis = redis.Redis()
-    _redis.flushdb()
+        self._redis = redis.Redis()
+        self._redis.flushdb()
 
     def store(self, data: TypeVar) -> str:
         """ method that stores the input data in Redis
