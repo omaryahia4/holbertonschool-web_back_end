@@ -2,7 +2,7 @@
 """Redis module"""
 import redis
 import uuid
-from typing import TypeVar
+from typing import TypeVar, Optional, Callable
 
 
 class Cache():
@@ -18,3 +18,20 @@ class Cache():
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
+
+    def get(self, key: str, fn: Optional[Callable]) -> None:
+        """method that converts the data back
+        to the desired format."""
+        data = self._redis.get(key)
+        if data:
+            return data
+        else:
+            return fn(data)
+
+    def get_str(self, data):
+        """method that decodes data"""
+        return data.decode("utf-8")
+
+    def get_int(self, data):
+        """method that converts data to int"""
+        return int(data)
