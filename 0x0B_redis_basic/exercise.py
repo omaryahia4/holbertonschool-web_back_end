@@ -19,7 +19,7 @@ class Cache():
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Optional[Callable]) -> None:
+    def get(self, key: str, fn: Optional[Callable] = None) -> None:
         """method that converts the data back
         to the desired format."""
         data = self._redis.get(key)
