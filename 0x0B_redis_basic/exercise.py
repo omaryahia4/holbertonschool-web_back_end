@@ -2,7 +2,7 @@
 """Redis module"""
 import redis
 import uuid
-from typing import TypeVar, Optional, Callable
+from typing import TypeVar, Optional, Callable, Union
 
 
 class Cache():
@@ -12,7 +12,7 @@ class Cache():
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-    def store(self, data: TypeVar) -> str:
+    def store(self, data: Union[str, bytes, int, float]) -> str:
         """ method that stores the input data in Redis
         using the random key and returns the key"""
         key = str(uuid.uuid4())
