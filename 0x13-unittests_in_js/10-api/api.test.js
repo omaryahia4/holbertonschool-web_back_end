@@ -79,11 +79,12 @@ describe('POST /login route testing', () => {
   it('should return the status 200 but username is undefined', (done) => {
     const options = {
       url: 'http://localhost:7865/login',
-      method: 'POST'
+      method: 'POST',
     }
+
     request(options, (error, response, body) => {
-      expect(body).to.equal(error, 'Welcome undefined');
       expect(response.statusCode).equal(200);
+      expect(body).to.equal('Welcome undefined');
       done();
     })
   })
