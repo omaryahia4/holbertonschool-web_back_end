@@ -17,9 +17,10 @@ def count_requests(method: Callable) -> Callable:
     def wrapper(url):
         """ Wrapper for decorator functionality """
         r.incr(f"count:{url}")
-        cached_data = r.get(f"cached:{url}")
-        if cached_data:
-            return
+        cached_html = r.get(f"cached:{url}")
+        if cached_html:
+            return cached_html.decode('utf-8')
+
         html = method(url)
         r.setex(f"cached:{url}", 10, html)
         return html
@@ -34,6 +35,3 @@ def get_page(url: str) -> str:
     """
     req = requests.get(url)
     return req.text
-
-
-get_page('http://google.com')
