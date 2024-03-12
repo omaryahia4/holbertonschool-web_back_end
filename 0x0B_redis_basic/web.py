@@ -21,7 +21,8 @@ def count_requests(method: Callable) -> Callable:
         if cached_data:
             return
         html = method(url)
-        return r.setex(f"cached:{url}", 10, html)
+        r.setex(f"cached:{url}", 10, html)
+        return html
 
     return wrapper
 
