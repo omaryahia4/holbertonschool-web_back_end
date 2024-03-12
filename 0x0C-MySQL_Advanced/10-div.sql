@@ -3,16 +3,15 @@
 -- second number is equal to 0.
 
 DROP FUNCTION IF EXISTS SafeDiv;
-DELIMITER $$
-CREATE FUNCTION SafeDiv(a INT, b INT)
-RETURNS DECIMAL(17, 16) DETERMINISTIC
+CREATE FUNCTION SafeDiv (a INT, b INT)
+RETURNS FLOAT
 BEGIN
-    IF (b = 0)
-    THEN
-        RETURN (0);
-    ELSE
-        RETURN (a / b);
-    END IF;
-END
-$$ 
+  DECLARE result FLOAT;
+  IF b = 0 THEN
+    SET result = 0;
+  ELSE
+    SET result = a / b;
+  END IF;
+  RETURN result;
+END$$
 DELIMITER ;
