@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ Module for Implementing an expiring web cache and tracker """
 
 from functools import wraps
@@ -21,7 +21,7 @@ def count_requests(method: Callable) -> Callable:
         if cached_data:
             return
         html = method(url)
-        return r.setex(f"cached:{url}", 60, html)
+        return r.setex(f"cached:{url}", 10, html)
 
     return wrapper
 
