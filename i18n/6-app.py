@@ -28,7 +28,6 @@ def hello_world():
     return render_template('6-index.html')
 
 
-@babel.localeselector
 def get_locale():
     """function that  determine the best
     match with our supported languages"""
@@ -61,6 +60,8 @@ def before_request():
     it as a global on flask.g.user."""
     g.user = get_user()
 
+
+babel.init_app(app, locale_selector=get_locale)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5000")
