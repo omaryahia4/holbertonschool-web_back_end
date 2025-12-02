@@ -33,27 +33,27 @@ describe("Case type is 'SUM'", function () {
 
 describe("Case type is 'SUBTRACT'", function () {
   it("subtract two positive integers", function () {
-    expect(calculateNumber("SUBTRACT", 1, 2)).to.equal(1);
+    expect(calculateNumber("SUBTRACT", 1, 2)).to.equal(-1);
   });
 
   it("subtract two positive floats", function () {
-    expect(calculateNumber("SUBTRACT", 2.3, 4.6)).to.equal(3);
+    expect(calculateNumber("SUBTRACT", 2.3, 4.6)).to.equal(-3);
   });
 
   it("subtract one positive integer and one negative integer", function () {
-    expect(calculateNumber("SUBTRACT", 2, -1)).to.equal(-3);
+    expect(calculateNumber("SUBTRACT", 2, -1)).to.equal(3);
   });
 
   it("subtract one positive integer and one negative float", function () {
-    expect(calculateNumber("SUBTRACT", 1, -2.4)).to.equal(-3);
+    expect(calculateNumber("SUBTRACT", 1, -2.4)).to.equal(3);
   });
 
   it("subtract one negative integer and one positive float", function () {
-    expect(calculateNumber("SUBTRACT", -1, 2.4)).to.equal(3);
+    expect(calculateNumber("SUBTRACT", -1, 2.4)).to.equal(-3);
   });
 
   it("subtract two negative floats", function () {
-    expect(calculateNumber("SUBTRACT", -1.5, -2.4)).to.equal(-1);
+    expect(calculateNumber("SUBTRACT", -1.5, -2.4)).to.equal(1);
   });
 
   it("subtract same number", function () {
@@ -61,7 +61,7 @@ describe("Case type is 'SUBTRACT'", function () {
   });
 
   it("round to the supp integer", function () {
-    expect(calculateNumber("SUBTRACT", 1.5, 2.5)).to.equal(1);
+    expect(calculateNumber("SUBTRACT", 1.5, 2.5)).to.equal(-1);
   });
 });
 
