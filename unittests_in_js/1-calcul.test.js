@@ -33,27 +33,27 @@ describe("Case type is 'SUM'", function () {
 
 describe("Case type is 'SUBTRACT'", function () {
   it("subtract two positive integers", function () {
-    assert.equal(calculateNumber("SUBTRACT", 1, 2), 1);
+    assert.equal(calculateNumber("SUBTRACT", 1, 2), -1);
   });
 
   it("subtract two positive floats", function () {
-    assert.equal(calculateNumber("SUBTRACT", 2.3, 4.6), 3);
+    assert.equal(calculateNumber("SUBTRACT", 2.3, 4.6), -3);
   });
 
   it("subtract one positive integer and one negative integer", function () {
-    assert.equal(calculateNumber("SUBTRACT", 2, -1), -3);
+    assert.equal(calculateNumber("SUBTRACT", 2, -1), 3);
   });
 
   it("subtract one positive integer and one negative float", function () {
-    assert.equal(calculateNumber("SUBTRACT", 1, -2.4), -3);
+    assert.equal(calculateNumber("SUBTRACT", 1, -2.4), 3);
   });
 
   it("subtract one negative integer and one positive float", function () {
-    assert.equal(calculateNumber("SUBTRACT", -1, 2.4), 3);
+    assert.equal(calculateNumber("SUBTRACT", -1, 2.4), -3);
   });
 
   it("subtract two negative floats", function () {
-    assert.equal(calculateNumber("SUBTRACT", -1.5, -2.4), -1);
+    assert.equal(calculateNumber("SUBTRACT", -1.5, -2.4), 1);
   });
 
   it("subtract same number", function () {
@@ -61,7 +61,7 @@ describe("Case type is 'SUBTRACT'", function () {
   });
 
   it("round to the supp integer", function () {
-    assert.equal(calculateNumber("SUBTRACT", 1.5, 2.5), 1);
+    assert.equal(calculateNumber("SUBTRACT", 1.5, 2.5), -1);
   });
 });
 
