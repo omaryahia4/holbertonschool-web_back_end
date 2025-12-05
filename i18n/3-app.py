@@ -5,7 +5,6 @@ from flask_babel import Babel
 
 
 app = Flask(__name__)
-babel = Babel(app)
 
 
 class Config():
@@ -28,8 +27,6 @@ def index():
     """Return index.html"""
     return render_template('3-index.html')
 
-
-babel.init_app(app, locale_selector=get_locale)
-
+babel = Babel(app, locale_selector=get_locale)
 if __name__ == '__main__':
     app.run()

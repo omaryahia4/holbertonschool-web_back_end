@@ -6,7 +6,7 @@ from flask import Flask, g, render_template, request
 from flask_babel import Babel
 
 app = Flask(__name__)
-babel = Babel(app)
+
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -66,8 +66,6 @@ def index():
         username = None
     return render_template('5-index.html', username=username)
 
-
-babel.init_app(app, locale_selector=get_locale)
-
+babel = Babel(app, locale_selector=get_locale)
 if __name__ == '__main__':
     app.run()
