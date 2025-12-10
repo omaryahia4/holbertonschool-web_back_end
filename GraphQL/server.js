@@ -1,5 +1,5 @@
-const express = require('express');
-const { graphql, buildSchema } = require('graphql');
+import express from 'express';
+import { graphql, buildSchema } from 'graphql';
 
 const app = express();
 const PORT = 4000;
@@ -13,7 +13,7 @@ const schema = buildSchema(`
 `);
 
 const rootValue = {
-  hello: () => 'Hello graphQL!',
+  hello: () => 'Hello GraphQL!',
 };
 
 app.post('/graphql', async (req, res) => {
@@ -35,4 +35,4 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}/graphql`);
 });
 
-module.exports = app;
+export default app;
