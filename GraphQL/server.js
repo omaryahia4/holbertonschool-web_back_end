@@ -13,7 +13,7 @@ const schema = buildSchema(`
 `);
 
 const rootValue = {
-  hello: () => 'Hello graphQL!',
+  hello: () => 'Hello GraphQL!',
 };
 
 app.post('/graphql', async (req, res) => {
