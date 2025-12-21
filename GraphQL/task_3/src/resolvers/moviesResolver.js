@@ -1,18 +1,15 @@
 import { moviesData } from '../data/moviesData.js';
 
 export const movieResolvers = {
-  // Root query: movie by ID
   movie: async (args, context) => {
     const { id } = args;
     const movie = moviesData.getMovieById(id);
     if (!movie) return null;
 
-    // Use DataLoader from context
     const actors = await context.loaders.actorById.loadMany(movie.actorIds);
     return { ...movie, actors };
   },
 
-  // Root query: all movies
   movies: async (args, context) => {
     const allMovies = moviesData.getAllMovies();
     return Promise.all(
@@ -23,7 +20,6 @@ export const movieResolvers = {
     );
   },
 
-  // Mutation: create a movie
   createMovie: async (args, context) => {
     const { input } = args;
     const newMovie = moviesData.createMovie(input);
@@ -32,7 +28,6 @@ export const movieResolvers = {
     return { ...newMovie, actors };
   },
 
-  // Mutation: update a movie
   updateMovie: async (args, context) => {
     const { id, input } = args;
     const updatedMovie = moviesData.updateMovie(id, input);
@@ -41,7 +36,6 @@ export const movieResolvers = {
     return { ...updatedMovie, actors };
   },
 
-  // Mutation: delete a movie
   deleteMovie: async (args, context) => {
     const { id } = args;
     const deletedMovie = moviesData.deleteMovie(id);

@@ -1,37 +1,39 @@
 import { seriesData } from '../data/seriesData.js';
 
 export const seriesResolvers = {
-  // Root query: series by ID
-  series: (source, args) => {
+  series: async (args, context) => {
     const { id } = args;
-    return seriesData.getSeriesById(id);
+    const s = seriesData.getSeriesById(id);
+    if (!s) return null;
+    const eps = await context.loaders.episodesBySeriesId.load(s.id);
+    return { ...s, episodes: eps };
   },
 
-  // Root query: all series
-  seriesList: () => seriesData.getAllSeries(),
+  seriesList: async (args, context) => {
+    const list = seriesData.getAllSeries();
+    return Promise.all(list.map(async (s) => {
+      const eps = await context.loaders.episodesBySeriesId.load(s.id);
+      return { ...s, episodes: eps };
+    }));
+  },
 
-  // Mutation: create series
-  createSeries: (source, args) => {
+  createSeries: (args, context) => {
     const { input } = args;
     return seriesData.createSeries(input);
   },
 
-  // Mutation: update series
-  updateSeries: (source, args) => {
+  updateSeries: (args, context) => {
     const { id, input } = args;
     return seriesData.updateSeries(id, input);
   },
 
-  // Mutation: delete series
-  deleteSeries: (source, args) => {
+  deleteSeries: (args, context) => {
     const { id } = args;
     return seriesData.deleteSeries(id);
   },
 
-  // Field resolver: episodes of a series
   Series: {
     episodes: async (parent, args, context) => {
-      // Use DataLoader from context
       const episodes = await context.loaders.episodesBySeriesId.load(parent.id);
       return episodes;
     }
