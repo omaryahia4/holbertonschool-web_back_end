@@ -1,8 +1,8 @@
 import express from 'express';
 import { graphql, buildSchema } from 'graphql';
-import { verifyToken, authenticate, createToken, requireRole, requireAuth } from './src/util/auth.js';
+import { verifyToken, authenticate, createToken, requireRole, requireAuth } from './src/utils/auth.js';
 import { createLoaders } from './src/loaders/loaders.js';
-import { findByEmail as findUserByEmail, add as addUser } from './src/util/usersStore.js';
+import { findByEmail as findUserByEmail, add as addUser } from './src/utils/usersStore.js';
 
 import { movieResolvers } from './src/resolvers/moviesResolver.js';
 import { actorResolvers } from './src/resolvers/actorsResolver.js';
